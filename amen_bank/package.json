@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "prettier": "^3.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5"
+  },
+  "scripts": {
+    "start": "http-server -p 63343"
+  }
+}

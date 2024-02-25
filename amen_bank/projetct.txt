@@ -1,0 +1,173 @@
+
+/***** message**********/
+Catégorie : Rédaction de messages
+
+    Rédiger un message à l'agence
+    Rédiger un message au support
+
+Catégorie : Gestion des messages
+    Messages reçus
+    Messages envoyés
+    Messages en instance
+    Messages supprimés
+/***********telechargement********/
+Catégorie : Opérations et Transactions
+
+    Swift
+    Avis d'opération
+    Image des chèques
+    Image des lettres de change
+    Sort des chèques versés
+    Transactions TPE
+
+Catégorie : Situation et Comptes
+
+    Situation des cartes
+    Situation des crédits
+    Situation des effets
+    Situation des placements
+    Relevé de compte
+
+Catégorie : Finance et Autres
+
+    Echelle d'intérêts
+    Divers
+/*************************************/
+ value = "Delete selected rows" onclick = del()
+
+ <div class="navbar">
+     <div class="navbar-left">
+         <div class="subnav">
+                 <a href="virement.html">Virement</a>
+                 <a href="" >Virement compte à compte</a>
+                 <a href="">Virement vers bénéficaire</a>
+         </div>
+     </div>
+ </div>
+ <script src="virement.js"></script>
+/****************************************/
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="subnav">
+            <button class="subnavbtn">Comptes et Transactions</button>
+            <div class="subnav-content">
+                <a href="">Compte</a>
+                <a href="virement.html">Virement</a>
+                <a href="">Monétique</a>
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn">Services Internationaux </button>
+            <div class="subnav-content">
+                <a href="">Bancaire Etranger</a>
+            </div>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn">Finances Personnelles</button>
+            <div class="subnav-content">
+                <a href="#">Services</a>
+                <a href="#">Financement</a>
+                <a href="#">Change/Bourse</a>
+                <a href="#">Gestion de budget</a>
+            </div>
+        </div>
+    </div>
+    <div id="currentDateTime"></div>
+</div>
+
+
+
+<!--             navigator bar-->
+<div class="navbar">
+    <div class="navbar-left">
+        <div class="subnav">
+            <button class="subnavbtn">Virement</button>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"  value = "Delete selected rows" onclick = del()>Virement compte à compte</button>
+        </div>
+        <div class="subnav">
+            <button class="subnavbtn"  value = "Delete selected rows" onclick = del()>Virement vers bénéficaire</button>
+        </div>
+    </div>
+
+</div>
+<!--             navigator bar -->
+
+
+/*****************navbar**************/
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+#currentDateTime{
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    background-color: #0E9D49;
+
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.subnav {
+    float: left;
+    overflow: hidden;
+}
+
+.subnav .subnavbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+    background-color: #0E4194;
+}
+
+.subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #0E4194;
+    width: 100%;
+    z-index: 1;
+}
+
+.subnav-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+}
+
+.subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+}
+
+.subnav:hover .subnav-content {
+    display: block;
+}
+/****************************************/

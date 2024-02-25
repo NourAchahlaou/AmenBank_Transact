@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@mennet Accéder à vos comptes</title>
+    <link rel="stylesheet" type="text/css" href="../css/login1.css" />
+  </head>
+
+  <body>
+    <!--          popup                -->
+    <div class="popup">
+      <button id="close" class="button_pop">&times;</button>
+      <h1 align="center" style="color: #0e9d49cc">Bienvenue</h1>
+      <p class="p">
+        Sur le site d'<strong style="color: #859095">@</strong
+        ><strong style="color: #0e4194">men</strong
+        ><strong style="color: #0e6940">net</strong>, le premier site d'internet
+        banking en tunisie
+      </p>
+      <wbr />
+      <h1 align="center" style="color: #0e9d49cc">Informations importantes</h1>
+      <p class="p">
+        Ne partagez jamais votre identifiant, votre mot de passe ou le jeton de
+        sécurité de l'appareil avec qui que ce soit.
+      </p>
+      <p class="p">
+        L'accès sera désactivé après cinq tentatives de connexion invalides
+        consécutives.
+      </p>
+      <a id="a" href="https://www.amennet.com.tn/ClientDemo/ClientDemo.html"
+        >demo</a
+      >
+    </div>
+    <!--          popup                -->
+    <!--          header                -->
+
+    <div class="header">
+      <div class="logo-container">
+        <img src="../amenbank_img/logo%20amen_bank.png" alt="Left Logo" />
+      </div>
+      <div class="logo-container">
+        <img src="../amenbank_img/logo%20mennet.png" alt="Right Logo" />
+      </div>
+    </div>
+    <div class="header">
+      <!--         side service                 -->
+      <div class="action-buttons">
+        <!--             1             -->
+        <button class="service-button" onclick="openNav()">&#9776;</button>
+        <div id="myNav" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+            >&times;</a
+          >
+          <div class="overlay-content">
+            <a href="../html/main.html">Amen Bank</a>
+            <a href="https://www.amennet.com.tn/ClientDemo/ClientDemo.html"
+              >Demo</a
+            >
+            <a href="https://www.amennet.com.tn/near/login.jsp"
+              >plateforme NE@R</a
+            >
+            <button class="dropdown-btn" style="font-family: serif">
+              Amen Mobile
+            </button>
+            <div class="dropdown-container">
+              <a href="https://www.amenbank.com.tn/"
+                ><img src="../amenbank_img/google_play.png" alt="google_play"
+              /></a>
+              <a
+                href="https://apps.apple.com/tn/app/amen-mobile/id1144455485?l=fr"
+                ><img src="../amenbank_img/apple_store.png" alt="appel_store"
+              /></a>
+            </div>
+            <a
+              href="https://www.google.com/maps/place/Amen+Bank+-+%D8%A8%D9%86%D9%83+%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%86%E2%80%AD/@36.8121271,10.1814874,17z/data=!3m1!4b1!4m6!3m5!1s0x12fd34637a4561c5:0xff2456e9abb14f93!8m2!3d36.8121228!4d10.1840623!16s%2Fg%2F1vs310gx?entry=ttu"
+              >location</a
+            >
+            <a href="https://amennet.com.tn/AMEN%20BANK%20certificate.pdf"
+              ><img
+                src="../amenbank_img/ISO-certif.png"
+                alt="certification"
+                style="width: 10%; height: 10%"
+            /></a>
+          </div>
+        </div>
+        <!--           2contact               -->
+        <button class="contact-button" onclick="openNavcontact()">
+          Contactez-nous
+        </button>
+        <div id="myNavcontact" class="overlay">
+          <a
+            href="javascript:void(0)"
+            class="closebtn"
+            onclick="closeNavcontact()"
+            >&times;</a
+          >
+          <div class="overlay-content">
+            <a href="mailto:amenbank@amenbank.com.tn">email</a>
+            <button class="dropdown-btn" style="font-family: serif">
+              Appelez-nous
+            </button>
+            <div class="dropdown-container">
+              <a href="tel:+12671148000">téléphone mobile</a>
+              <a href="tel:+12671833517">fixe</a>
+            </div>
+          </div>
+        </div>
+
+        <!--              3plus            -->
+        <button class="service-button" onclick="openNavplus()">plus</button>
+        <div id="myNavplus" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNavplus()"
+            >&times;</a
+          >
+          <div class="overlay-content">
+            <a href="https://www.amennet.com.tn/Contrat-abonnement-@mennet.pdf"
+              >Contrat d'Abonnement</a
+            >
+            <a href="https://www.amennet.com.tn/Tarification-@mennet.pdf"
+              >Tarification Appliquée</a
+            >
+            <a
+              href="https://www.amennet.com.tn/Notice_Protection_des_donnees_Personnelles.pdf"
+              >Notice Protection des Données Personnelles</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!--                          -->
+      <!--         side service                 -->
+      <div class="action-buttons">
+        <a href="login1.html"
+          ><button class="login-button" style="color: #0e4194">Login</button></a
+        >
+        <a
+          href="https://www.amenfirstbank.com.tn/EtapesOuvertureCompte.jsp#gsc.tab=0"
+          ><button class="signup-button">Sign Up</button></a
+        >
+      </div>
+    </div>
+    <!--                          -->
+
+    <hr />
+
+    <!--      side nav button                    -->
+    <div id="mySidenav">
+      <a
+        class="a"
+        href="https://www.facebook.com/AMENBANK.page.officielle/"
+        id="facebook"
+        >Facebook</a
+      >
+      <a class="a" href="https://twitter.com/AMENBANKTN" id="twitter"
+        >Twitter</a
+      >
+      <a
+        href="https://www.youtube.com/channel/UCnhPXaprDJbYzXKIBTNf9jw"
+        id="youtube"
+        class="a"
+        >YouTube</a
+      >
+      <a
+        href="https://www.linkedin.com/company/amen-bank/"
+        id="linkdin"
+        class="a"
+        >Linkdin</a
+      >
+      <a
+        href="https://www.instagram.com/amen_bank_officielle/"
+        id="instagram"
+        class="a"
+        >instagram</a
+      >
+    </div>
+    <!--      frame                   -->
+    <div class="frame">
+      <img
+        src="../amenbank_img/girl-in-green.png"
+        align="right"
+        height="450"
+        width="580"
+        alt="lady with a computer :)"
+      />
+      <div class="login-container">
+        <form class="login-form">
+          <h2>Login</h2>
+          <div class="form-group">
+            <label class="label" for="username">Login:</label>
+            <input
+              class="input"
+              type="text"
+              id="username"
+              name="username"
+              placeholder="123.."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label class="label" for="password">Mot de passe:</label>
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="*******"
+              required
+            />
+          </div>
+          <button class="button" id="otpbtn">connexion</button>
+          <a
+            href="https://www.amennet.com.tn/forgottenPassword.jsp"
+            class="forgot-password-link"
+            >Mot de passe oublié?</a
+          >
+        </form>
+      </div>
+    </div>
+    <script src="../js/login1.js"></script>
+  </body>
+</html>

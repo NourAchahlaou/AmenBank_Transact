@@ -1,0 +1,94 @@
+. {
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    url("../amenbank_img/creditcardbg.png") right top no-repeat,
+    url("../amenbank_img/creditcardbg.png") bottom left no-repeat;
+  font-family: "lato", sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+}
+.otp_container {
+  background-color: rgba(14, 157, 73, 0.8);
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 1000px;
+  text-align: center;
+}
+.otp-code-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+.otp-code {
+  caret-color: transparent;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 1px solid #eee;
+  font-size: 30px;
+  font-family: "lato", sans-serif;
+  width: 75px;
+  height: 80px;
+  margin: 10px;
+  text-align: center;
+  font-weight: 300;
+}
+@media (max-width: 600px) {
+  .otp-code-container {
+    flex-wrap: wrap;
+  }
+  .otp-code {
+    font-size: 24px;
+    height: 50px;
+    max-width: 50px;
+  }
+}
+.otp-code::-webkit-outer-spin-button,
+.otp-code::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+/* this for firefox*/
+.otp-code[type="number"] {
+  -moz-appearance: textfield;
+}
+.otp-code:valid {
+  border-color: #0e9d49;
+  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+}
+.otp-btn {
+  font-family: "lato", sans-serif;
+  min-width: 400px;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  margin: 0 0 20px 0;
+  padding: 0.775rem 0.75rem;
+  line-height: 1.5;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.otp-btn-primary {
+  color: #fff;
+  background-color: #0e9d49;
+  border-color: #0e9d49;
+}
+.otp-btn-primary:hover {
+  background-color: #7dd138;
+}
+
+
+/******************************************************************/
+
+

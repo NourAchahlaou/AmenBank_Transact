@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>verification de compte</title>
+    <link rel="stylesheet" href="../css/OTP.css" />
+  </head>
+  <body>
+    <div class="otp_container">
+      <h2 style="color: #fff">Vérifiez votre compte</h2>
+      <wbr />
+      <p>
+        Nous vous avons envoyé par sms le code à cinq chiffres<br />
+        Entrez le code ci-dessous pour confirmer votre compte.
+      </p>
+      <div class="otp-code-container">
+        <label>
+          <input
+            type="number"
+            class="otp-code"
+            placeholder="0"
+            min="0"
+            max="9"
+            required
+          />
+          <input
+            type="number"
+            class="otp-code"
+            placeholder="0"
+            min="0"
+            max="9"
+            required
+          />
+          <input
+            type="number"
+            class="otp-code"
+            placeholder="0"
+            min="0"
+            max="9"
+            required
+          />
+          <input
+            type="number"
+            class="otp-code"
+            placeholder="0"
+            min="0"
+            max="9"
+            required
+          />
+          <input
+            type="number"
+            class="otp-code"
+            placeholder="0"
+            min="0"
+            max="9"
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <button type="button" class="otp-btn otp-btn-primary" id="otpbtn">verifier</button>
+      </div>
+      <small>
+        Si vous n'avez pas reçu de code !
+        <strong style="color: #0e4194">RENVOYER</strong>
+      </small>
+    </div>
+
+
+    <script src="../js/otp.js"></script>
+  </body>
+</html>

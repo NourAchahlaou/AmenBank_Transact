@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>virement</title>
+    <link rel="stylesheet" type="text/css" href="../css/login1.css" />
+    <link rel="stylesheet" type="text/css" href="../css/virement.css" />
+  </head>
+  <style>
+    body {
+      background: none;
+    }
+  </style>
+  <body>
+    <div id="overlay-virement"></div>
+    <div id="mysidenav" class="sidenav">
+      <a href="javascript: void(0)" class="closebtn" onclick="closeNav1()"
+        >&times;</a
+      >
+      <a href="#">Compte</a>
+      <a href="../html/virement.html">Viremen</a>
+      <a href="#">Monétique</a>
+      <a href="#">Services</a>
+      <a href="#">Financement</a>
+      <a href="#">Change/Bourse</a>
+      <a href="#">Gestion de budget</a>
+    </div>
+    <div id="mysidenav2" class="sidenav">
+      <a href="javascript: void(0)" class="closebtn" onclick="closeNav2()"
+        >&times;</a
+      >
+      <a
+        onclick="openpopupv()"
+        class="sidenavpbutton"
+        data-content="virementCompte"
+        >Virement de compte à compte</a
+      >
+      <a
+        onclick="openpopupvb()"
+        class="sidenavpbutton"
+        data-content="virementCompteVVB"
+        >Virement vers bénéficaire</a
+      >
+      <a
+        class="sidenavpbutton"
+        onclick="openpopupvm()"
+        data-content="virementCompteVM"
+        >Virement de masse</a
+      >
+      <a
+        href="#"
+        onclick="openpopupvp()"
+        class="sidenavpbutton"
+        data-content="virementCompteVP"
+        >Virement permanent</a
+      >
+    </div>
+
+    <!--              header -->
+    <div class="header">
+      <div class="logo-container">
+        <img src="../amenbank_img/logo%20amen_bank.png" alt="Left Logo" />
+        <img src="../amenbank_img/logo%20mennet.png" alt="Right Logo" />
+      </div>
+      <div></div>
+      <div class="logo-container">
+        <nav role="navigation" class="primary-navigation">
+          <ul>
+            <li>
+              <a href="#" style="color: #0e9d49"
+                ><i class="fa fa-user" style="color: #0e9d49"></i> &dtrif;</a
+              >
+              <ul>
+                <li>
+                  <a
+                    href="https://amennet.com.tn/ClientDemo/Preference/PreCompte.html"
+                    >paramètres</a
+                  >
+                </li>
+                <li><a href="../html/login1.html">déconnexion</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" style="color: #0e9d49"
+                ><i class="fa-solid fa-envelope" style="color: #0e9d49"></i>
+                &dtrif;</a
+              >
+              <ul class="dropdown">
+                <li><a href="#">Rédaction de messages</a></li>
+                <li><a href="#"> Gestion des messages</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" style="color: #0e9d49"
+                ><i class="fa-solid fa-download" style="color: #0e9d49"></i>
+                &dtrif;</a
+              >
+              <ul class="dropdown">
+                <li>
+                  <a href="#"
+                    >Opérations et<br />
+                    Transactions</a
+                  >
+                </li>
+                <li>
+                  <a href="#">
+                    Situation et<br />
+                    Comptes</a
+                  >
+                </li>
+                <li>
+                  <a href="#">
+                    Finance et<br />
+                    Autres</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!--              header -->
+
+    <!--             main history -->
+    <div id="main">
+      <!--             side nav in the nav bar  -->
+      <div class="navbar" id="navbar">
+        <div class="navbar-left">
+          <span
+            style="
+              font-family: arvo, serif;
+              font-size: 18px;
+              cursor: pointer;
+              color: white;
+              padding-left: 18px;
+            "
+            onclick="openNav1()"
+            >&#9776;</span
+          >
+          <span
+            style="
+              font-family: arvo, serif;
+              font-size: 18px;
+              cursor: pointer;
+              color: white;
+              padding-left: 18px;
+            "
+            onclick="openNav2()"
+            >Virement</span
+          >
+        </div>
+        <div id="currentDateTime" style="font-family: arvo, serif"></div>
+      </div>
+      <!--             side nav in the nav bar  -->
+      <!--             image -->
+
+      <img
+        src="../amenbank_img/amenbank_croped.jpeg"
+        alt="bank amen"
+        height="auto"
+        width="100%"
+        style="opacity: 1"
+      />
+
+      <!--             image -->
+      <!--             main history -->
+      <div class="container-main">
+        <div class="table-container">
+          <div class="header-main">
+            <h1>Historiques des virements</h1>
+          </div>
+          <h3>Transferts sortants :</h3>
+          <div>
+            <div class="scrollable-table">
+              <table id="T-historique">
+              </table>
+
+            </div>
+          </div>
+          <div class="button-container">
+          <button type="button" class="buttonV" id="refreshTableButtonmain">
+            actualiser
+          </button>
+          <button onclick="printTable()" class="buttonV">Imprimer</button></div>
+        </div>
+        <div class="side-info">
+          <div class="compte-virement">
+            <div class="account-container">
+              <label for="libelle-compte" class="label-main"
+                >votre compte
+              </label>
+              <select
+                name="libelle-compte"
+                id="libelle-compte"
+                class="select-main"
+              >
+                <option>votre compte</option>
+              </select>
+            </div>
+            <div class="account-container">
+              <div class="label-main">Solde actuel :</div>
+              <div id="solde" align="center">...</div>
+            </div>
+          </div>
+          <div class="compte-virement">
+            <div class="search-container">
+              <label>
+                <input
+                  type="text"
+                  class="search-input"
+                  placeholder="Rechercher des transactions..."
+                />
+              </label>
+              <label>
+                <select class="period-select">
+                  <option value="1">Les 7 derniers jours</option>
+                  <option value="2">Les 30 derniers jours</option>
+                  <option value="3">Les 3 derniers mois</option>
+                  <option value="4">Les 6 derniers mois</option>
+                  <option value="5">L'année dernière</option>
+                  <option value="6">Tout le temps</option>
+                </select>
+              </label>
+              <button class="search-btn">Rechercher</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--             main history -->
+
+    <!-- popup virement compte à compte -->
+    <div class="popupV" id="popupV">
+      <div class="sidenavp">
+        <button
+          class="sidenavpbutton"
+          name="virementCompte"
+          id="virementComptebtn"
+        >
+          Nouveau virement
+        </button>
+        <button
+          class="sidenavpbutton"
+          name="virementSigne"
+          id="virementSignebtn"
+        >
+          Virements à signer
+        </button>
+        <button
+          class="sidenavpbutton"
+          name="virementhistorique"
+          id="virementhistoriquebtn"
+        >
+          Historiques des virements
+        </button>
+      </div>
+      <div class="mainp" id="virementCompte">
+        <button id="closeV_1" class="buttonV_pop" onclick="closepopupv()">
+          &times;
+        </button>
+        <h2 class="popup-title">Virement compte à compte</h2>
+
+        <form id="transactionFormV_1">
+          <div class="formV-group">
+            <label for="compteDebiterV_1" class="labelV" style="color: #0e9d49"
+              >Compte à débiter:</label
+            >
+            <select id="compteDebiterV_1" class="selectV">
+              <option>Sélectionner le compte à débiter</option>
+            </select>
+          </div>
+          <div class="formV-group">
+            <label class="labelV" for="deviseV_1" style="color: #0e9d49"
+              >Devise:</label
+            >
+            <select id="deviseV_1" class="selectV">
+              <option>Devise</option>
+              <option>TND</option>
+            </select>
+          </div>
+          <div class="formV-group">
+            <label for="compteCrediterV_1" class="labelV" style="color: #0e9d49"
+              >Compte à créditer:</label
+            >
+            <select id="compteCrediterV_1" class="selectV">
+              <option>Sélectionner le compte à créditer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="montantV_1" class="labelV" style="color: #0e9d49"
+              >Montant:</label
+            >
+            <input
+              type="text"
+              id="montantV_1"
+              name="montant"
+              class="inputV"
+              placeholder="500"
+            />
+          </div>
+          <div class="form-group">
+            <label for="motifPaiementV_1" class="labelV" style="color: #0e9d49"
+              >Motif paiement:</label
+            >
+            <textarea
+              type="text"
+              id="motifPaiementV_1"
+              name="motifPaiement"
+              class="inputV"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="dateExecutionV_1" class="labelV" style="color: #0e9d49"
+              >Date d'exécution:</label
+            >
+            <input
+              type="date"
+              id="dateExecutionV_1"
+              name="dateExecution"
+              class="inputV"
+              placeholder="YYYY-MM-DD"
+            />
+          </div>
+          <button
+            class="buttonV"
+            id="submitTransactionV_1"
+            onclick="createCACTransaction()"
+            type="button"
+          >
+            Valider
+          </button>
+        </form>
+      </div>
+      <div class="mainp" id="virementSigne">
+        <button id="closeV_2" class="buttonV_pop" onclick="closepopupv()">
+          &times;
+        </button>
+        <h2 class="popup-title">Virement à signe</h2>
+        <form id="transactionFormV_2">
+          <div style="overflow-x: auto">
+            <table id="transferDetails tbody"></table>
+          </div>
+        </form>
+        <div class="button-container">
+          <button class="buttonV" id="refreshTableButton">actualiser</button>
+        </div>
+      </div>
+      <div class="mainp" id="virementhistorique">
+        <button id="closeV_3" class="buttonV_pop" onclick="closepopupv()">
+          &times;
+        </button>
+        <h2 class="popup-title">Historiques des virements</h2>
+        <form id="transactionFormV_3">
+          <div style="overflow-x: auto">
+            <table id="T_virementhistorique"></table>
+          </div>
+        </form>
+        <div class="button-container">
+          <button type="button" class="buttonV" onclick="printTableV()">
+            Imprimer
+          </button>
+          <button type="button" class="buttonV" id="refreshTableButton_1">
+            actualiser
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- popup virement compte à compte -->
+
+    <!-- popup virement vers benif -->
+    <div class="popupV" id="popupVVB">
+      <div class="sidenavp">
+        <button
+          class="sidenavpbutton"
+          name="virementCompteVVB"
+          id="virementCompteVVBbtn"
+        >
+          Nouveau virement
+        </button>
+        <button
+          class="sidenavpbutton"
+          name="benefCompteVVB"
+          id="benefgestionVVBbtn"
+          onclick="openpopupGestionB()"
+        >
+          Gestion des bénéficiaires
+        </button>
+        <button
+          class="sidenavpbutton"
+          name="virementSigneVVB"
+          id="virementSigneVVBbtn"
+        >
+          Virements à signer
+        </button>
+        <button
+          class="sidenavpbutton"
+          name="virementhistoriqueVVB"
+          id="virementhistoriqueVVBbtn"
+        >
+          Historiques des virements
+        </button>
+      </div>
+      <div class="mainp" id="virementCompteVVB">
+        <button id="closeVVB_1" class="buttonV_pop" onclick="closepopupvb()">
+          &times;
+        </button>
+        <h2 class="popup-title">Virement vers bénéficaire</h2>
+
+        <form id="transactionFormVVB_1">
+          <div class="formV-group">
+            <label for="compteDebiterVB_1" class="labelV" style="color: #0e9d49"
+              >Compte à débiter:</label
+            >
+            <select id="compteDebiterVB_1" class="selectV">
+              <option>Sélectionner le compte à débiter</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+          <div class="formV-group">
+            <label class="labelV" for="deviseVB_1" style="color: #0e9d49"
+              >Devise:</label
+            >
+            <select id="deviseVB_1" class="selectV">
+              <option>Devise</option>
+              <option>TND</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="montantVB_1" class="labelV" style="color: #0e9d49"
+              >Montant:</label
+            >
+            <input
+              type="text"
+              id="montantVB_1"
+              name="montant"
+              class="inputV"
+              placeholder="500"
+            />
+          </div>
+          <div class="form-group">
+            <label for="motifPaiementVB_1" class="labelV" style="color: #0e9d49"
+              >Motif paiement:</label
+            >
+            <textarea
+              type="text"
+              id="motifPaiementVB_1"
+              name="motifPaiement"
+              class="inputV"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="dateExecutionVB_1" class="labelV" style="color: #0e9d49"
+              >Date d'exécution:</label
+            >
+            <input
+              type="date"
+              id="dateExecutionVB_1"
+              name="dateExecution"
+              class="inputV"
+              placeholder="YYYY-MM-DD"
+            />
+          </div>
+          <div class="form-group">
+            <label for="beneficiary-list" class="labelV" style="color: #0e9d49"
+              >Bénéficiaire:</label
+            >
+            <select class="selectV" id="beneficiary-list">
+              <option>Sélectionner le Bénéficiaire</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="Nom/RSVB_1" class="labelV" style="color: #0e9d49">
+              Nom/Raison Sociale:</label
+            >
+            <input
+                    type="text"
+                    id="Nom/RSVB_1"
+                    name="dateExecution"
+                    class="inputV"
+                    placeholder="Nom/Raison Sociale "
+            />
+          </div>
+          <div class="form-group">
+            <label for="BanqueVB_1" class="labelV" style="color: #0e9d49"
+            >Banque:</label
+            >
+            <select
+                    type="text"
+                    id="BanqueVB_1"
+                    name="dateExecution"
+                    class="selectV"
+            >
+              <option>Banque</option>
+              <option>ATB</option>
+              <option>BFT</option>
+              <option>BNA</option>
+              <option>AMEN BANK</option>
+              <option>ATTIJARI</option>
+              <option>BT</option>
+              <option>BDET</option>
+              <option>STB</option>
+              <option>UBCI</option>
+              <option>BIAT</option>
+              <option>BCT</option>
+              <option>UIB</option>
+              <option>BH</option>
+              <option>CBNA</option>
+              <option>CCP</option>
+              <option>BNDT</option>
+              <option>BTK</option>
+              <option>STUSID</option>
+              <option>TQB</option>
+              <option>BTE</option>
+              <option>BTL</option>
+              <option>BTS</option>
+              <option>ABC</option>
+              <option>BCMA</option>
+              <option>AL BARAKA</option>
+              <option>NAIB</option>
+              <option>ALUBAF</option>
+              <option>UTB</option>
+              <option>TIB</option>
+              <option>LINC</option>
+              <option>CITI BANK</option>
+              <option>ABC TS</option>
+              <option>ALUBAF</option>
+              <option>AUTRES</option>
+              <option>BZ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Num_compteVB_1" class="labelV" style="color: #0e9d49"
+            >Numéro de compte:</label
+            >
+            <input
+                    type="text"
+                    id="Num_compteVB_1"
+                    name="dateExecution"
+                    class="inputV"
+                    placeholder="Numéro de compte"
+            />
+          </div>
+          <button
+            type="button"
+            class="buttonV"
+            id="submitTransactionVVB_1"
+            onclick="createVirementVersBeneficiaire()"
+          >
+            Valider
+          </button>
+        </form>
+      </div>
+      <div class="mainp" id="virementSigneVVB">
+        <button id="closeVVB_3" class="buttonV_pop" onclick="closepopupvb()">
+          &times;
+        </button>
+        <h2 class="popup-title">Virement à signe</h2>
+        <form id="transactionFormVVB_3">
+          <div style="overflow-x: auto">
+            <table id="transferDetails tbody_vb"></table>
+          </div>
+        </form>
+        <button type="button" class="buttonV" id="refreshTableButton_vb">
+          Actualiser
+        </button>
+      </div>
+      <div class="mainp" id="virementhistoriqueVVB">
+        <button id="closeVVB_4" class="buttonV_pop" onClick="closepopupvb()">
+          &times;
+        </button>
+        <h2 class="popup-title">Historiques des virements</h2>
+        <form id="transactionFormVVB_4">
+          <div style="overflow-x: auto">
+            <table id="T-virementhistoriqueVVB">
+            </table>
+          </div>
+        </form>
+        <div class="button-container">
+          <button type="button" class="buttonV" onclick="printTableVB()">
+            Imprimer
+          </button>
+          <button type="button" class="buttonV" id="refreshTableButton_2">
+            actualiser
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- popup virement vers benif -->
+
+    <!-- popup gestion benif -->
+    <div class="popupV" id="popupVVB_gestionbenef">
+      <div class="sidenavp">
+        <button
+          class="sidenavpbutton"
+          name="virementCompteVVB"
+          id="benefCompteVVBbtn"
+        >
+          Nouveau bénéficiaire
+        </button>
+        <button
+          class="sidenavpbutton"
+          name="benefCompteVVB"
+          id="benefModifierVVBbtn"
+        >
+          Modifier bénéficiaire
+        </button>
+        <button
+          class="sidenavpbutton"
+          name="virementSigneVVB"
+          id="benefSupprimerVVBbtn"
+        >
+          Supprimer bénéficiaire
+        </button>
+      </div>
+      <div class="mainp" id="benefCompteVVB">
+        <div class="buttonPopup-container">
+          <button class="buttonV_pop" onclick="openpopupvb()">
+            <i class="gg-arrow-left-r" id="icn"></i>
+          </button>
+          <button
+            id="closeVVB_2"
+            class="buttonV_pop"
+            onclick="closepopupGestionB()"
+          >
+            &times;
+          </button>
+        </div>
+
+        <h2 class="popup-title">Ajouter des bénéficiaires</h2>
+        <form id="transactionFormVVB_2">
+          <div class="form-group">
+            <label for="Nom/RSVB_2" class="labelV" style="color: #0e9d49">Nom et Prenom/Raison Sociale:</label>
+            <input type="text" id="Nom/RSVB_2" class="inputV" placeholder="Nom et Prenom/Raison Sociale" />
+          </div>
+          <div class="form-group">
+            <label for="RIB_2" class="labelV" style="color: #0e9d49">Relevé d'identite bancaire(RIB):</label>
+            <input type="text" id="RIB_2" class="inputV" placeholder="RIB" />
+          </div>
+          <div class="form-group">
+            <label for="libelléVB_2" class="labelV" style="color: #0e9d49">libellé:</label>
+            <input type="text" id="libelléVB_2" class="inputV" placeholder="Libellé" />
+          </div>
+          <div class="form-group">
+            <label for="telephoneVB_2" class="labelV" style="color: #0e9d49">Telephone:</label>
+            <input type="text" id="telephoneVB_2" class="inputV" placeholder="Telephone" />
+          </div>
+          <div class="form-group">
+            <label for="emailVB" class="labelV" style="color: #0e9d49">Email:</label>
+            <input type="text" id="emailVB" class="inputV" placeholder="Email" />
+          </div>
+          <button type="button" class="buttonV" onclick="createBeneficiary()" id="submitTransactionVVB_2">
+            Valider
+          </button>
+
+        </form>
+      </div>
+      <div class="mainp" id="benefModifierVVB">
+        <div class="buttonPopup-container">
+          <button class="buttonV_pop" onclick="openpopupvb()">
+            <i class="gg-arrow-left-r" id="icn_2"></i>
+          </button>
+          <button
+            id="closeVVMB_2"
+            class="buttonV_pop"
+            onclick="closepopupGestionB()"
+          >
+            &times;
+          </button>
+        </div>
+
+        <h2 class="popup-title">Modifier des bénéficiaires</h2>
+        <form id="transactionFormVVMB_2">
+          <div class="form-group">
+            <label
+                    for="beneficiary-list_1">
+              <select class="selectV" id="beneficiary-list_1">
+                <option>Sélectionner le Bénéficiaire</option>
+              </select></label>
+          </div>
+          <button type="button" class="buttonV" id="modifyVVB">Continue</button>
+          <div id="modifyforum" class="hiddenVM_1">
+            <div class="form-group">
+              <label for="Nom/RSVMB_2" class="labelV" style="color: #0e9d49"
+                >Nom et Prenom/Raison Sociale:</label
+              >
+              <input
+                type="text"
+                id="Nom/RSVMB_2"
+                name="montant"
+                class="inputV"
+                placeholder="Nom et Prenom/Raison Sociale"
+              />
+            </div>
+            <div class="form-group">
+              <label for="RIB_MB_2" class="labelV" style="color: #0e9d49"
+                >Relevé d'identite bancaire(RIB):</label
+              >
+              <input
+                type="text"
+                id="RIB_MB_2"
+                name="RIB"
+                class="inputV"
+                placeholder="RIB"
+              />
+            </div>
+            <div class="form-group">
+              <label for="libelléVMB_2" class="labelV" style="color: #0e9d49"
+                >libellé:</label
+              >
+              <input
+                type="text"
+                id="libelléVMB_2"
+                name="libellé"
+                class="inputV"
+                placeholder="Libellé"
+              />
+            </div>
+            <div class="form-group">
+              <label for="telephoneVMB_2" class="labelV" style="color: #0e9d49"
+                >Telephone:</label
+              >
+              <input
+                type="text"
+                id="telephoneVMB_2"
+                name="telephone"
+                class="inputV"
+                placeholder="telephone"
+              />
+            </div>
+            <div class="form-group">
+              <label for="emailVMB" class="labelV" style="color: #0e9d49">
+                Email:</label
+              >
+              <input
+                type="text"
+                id="emailVMB"
+                name="email"
+                class="inputV"
+                placeholder="Email"
+              />
+            </div>
+            <button
+              type="button"
+              onclick="closepopupGestionB()"
+              class="buttonV"
+              id="submitTransactionVVMB_2"
+            >
+              Modifier
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="mainp" id="benefSupprimerVVB">
+        <div class="buttonPopup-container">
+          <button class="buttonV_pop" onclick="openpopupvb()">
+            <i class="gg-arrow-left-r" id="icn_3"></i>
+          </button>
+          <button
+            id="closeVVSB_4"
+            class="buttonV_pop"
+            onclick="closepopupGestionB()"
+          >
+            &times;
+          </button>
+        </div>
+
+        <h2 class="popup-title">Supprimer des bénéficiaires</h2>
+        <form id="transactionFormVVSB_4">
+          <div class="form-group">
+            <label
+                    for="beneficiary-list_2">
+              <select class="selectV" id="beneficiary-list_2">
+                <option>Sélectionner le Bénéficiaire</option>
+              </select></label>
+
+          </div>
+          <button
+            type="button"
+            class="buttonV"
+            onclick="closepopupGestionB()"
+            id="SUPPRIMERVVMB"
+          >
+            Supprimer
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- popup gestion benif -->
+
+    <!-- popup virement de masse -->
+    <div class="popupV" id="popupVM">
+      <div class="sidenavp">
+        <button
+          class="sidenavpbutton"
+          data-content="virementCompteVM"
+          id="virementCompteVMbtn"
+        >
+          Nouveau virement
+        </button>
+        <button
+          class="sidenavpbutton"
+          data-content="virementSigneVM"
+          id="virementSigneVMbtn"
+        >
+          Virement de masse à signer
+        </button>
+        <button
+          class="sidenavpbutton"
+          data-content="virementhistoriqueVM"
+          id="virementhistoriqueVMbtn"
+        >
+          Historiques des virements
+        </button>
+      </div>
+      <div class="mainp" id="virementCompteVM">
+        <button id="closeVM_1" class="buttonV_pop" onclick="closepopupvm()">
+          &times;
+        </button>
+        <div id="formVM" class="hiddenmainVM">
+          <h2 class="popup-title">Virement de masse</h2>
+
+          <form id="transactionFormVM_1">
+            <div class="form-group">
+              <label
+                for="compte-debiterVM_1"
+                class="labelV"
+                style="color: #0e9d49"
+                >Compte à déditer:</label
+              >
+
+              <select id="compte-debiterVM_1" class="selectV">
+                <option>Sélectionner le compte à débiter</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label
+                for="nombre-ordreVM_1"
+                class="labelV"
+                style="color: #0e9d49"
+                >Nombre de bénéficiares</label
+              >
+              <input
+                type="text"
+                id="nombre-ordreVM_1"
+                name="nombre-ordre"
+                class="inputV"
+                placeholder="500"
+              />
+            </div>
+            <div class="form-group">
+              <label
+                for="dateExecutionVM_1"
+                class="labelV"
+                style="color: #0e9d49"
+                >Date d'exécution:</label
+              >
+              <input
+                type="date"
+                id="dateExecutionVM_1"
+                name="dateExecution"
+                class="inputV"
+                placeholder="YYYY-MM-DD"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="montantVM_1" class="labelV" style="color: #0e9d49"
+                >Montant:</label
+              >
+              <input
+                type="text"
+                id="montantVM_1"
+                name="montant"
+                class="inputV"
+                placeholder="500"
+              />
+            </div>
+            <div class="form-group">
+              <label
+                for="motifPaiementVM_1"
+                class="labelV"
+                style="color: #0e9d49"
+                >Motif paiement:</label
+              >
+              <textarea
+                type="text"
+                id="motifPaiementVM_1"
+                name="motifPaiement"
+                class="inputV"
+              ></textarea>
+            </div>
+            <button
+              type="button"
+              class="buttonV"
+              id="continuevm"
+              onclick="continueVMClick()"
+            >
+              Valider
+            </button>
+          </form>
+        </div>
+        <div id="selectBenefVM" class="hiddenVM_1">
+          <h2 class="popup-title">Virement de masse</h2>
+
+
+          <label
+            for="beneficiary-list_3">
+          <select class="selectV" id="beneficiary-list_3">
+            <option>Sélectionner le Bénéficiaire</option>
+          </select></label>
+          <div class="button-container">
+          <button class="buttonV" id="retourbtn">retour</button>
+          <button class="buttonV" id="transferButton">Transfer</button>
+          </div>
+          <div id="transferDetails" class="hiddenVM_2">
+            <h2>Transfer Details</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Beneficiary</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <button class="buttonV" style="margin-top: 20px">valider</button>
+          </div>
+        </div>
+      </div>
+      <div class="mainp" id="virementSigneVM">
+        <button id="closeVM_2" class="buttonV_pop" onclick="closepopupvm()">
+          &times;
+        </button>
+        <h2 class="popup-title">Virement à signe</h2>
+        <form id="transactionFormVM_2">
+          <div style="overflow-x: auto">
+            <table>
+              <tr>
+                <th>
+                  <label
+                    ><input type="checkbox" id="signeVM_2" name="signev"
+                  /></label>
+                </th>
+                <th>Type</th>
+                <th>Compte à débiter</th>
+                <th>Compte à créditer</th>
+                <th>Montant</th>
+                <th>Motif paiement</th>
+                <th>Devise</th>
+                <th>Date d'exécution</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="modifierbtn">Modifier</button></td>
+              </tr>
+            </table>
+          </div>
+        </form>
+        <div class="button-container">
+          <button type="button" onclick="closepopupvm()" class="buttonV">
+            signer
+          </button>
+          <button type="button" onclick="closepopupvm()" class="buttonV">
+            refuser
+          </button>
+        </div>
+      </div>
+      <div class="mainp" id="virementhistoriqueVM">
+        <button id="closeVM_3" class="buttonV_pop" onclick="closepopupvm()">
+          &times;
+        </button>
+        <h2 class="popup-title">Historiques des virements de masse</h2>
+        <form id="transactionFormVM_3">
+          <div style="overflow-x: auto">
+            <table id="T-virementhistoriqueVM">
+              <tr>
+                <th>Type</th>
+                <th>Compte à débiter</th>
+                <th>Bénéficiaire</th>
+                <th>Montant</th>
+                <th>Devise</th>
+                <th>Date d'exécution</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </form>
+        <div class="button-container">
+          <button type="button" class="buttonV" onclick="printTableVM()">
+            Imprimer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- popup virement de masse-->
+
+    <!-- popup virement permanent -->
+    <div class="popupV" id="popupVP">
+      <div class="sidenavp">
+        <button
+          class="sidenavpbutton"
+          data-content="virementCompteVP"
+          id="virementCompteVPbtn"
+        >
+          Virement de compte à compte
+        </button>
+        <button
+          class="sidenavpbutton"
+          data-content="virementbenefVP"
+          id="virementbenefVPbtn"
+        >
+          Virement vers bénéficaire
+        </button>
+        <button
+          class="sidenavpbutton"
+          data-content="virementSigneVP"
+          id="virementSigneVPbtn"
+        >
+          Virement permanent à signer
+        </button>
+        <button
+          class="sidenavpbutton"
+          data-content="virementhistoriqueVP"
+          id="virementhistoriqueVPbtn"
+        >
+          Liste des virements permanents
+        </button>
+      </div>
+      <div class="mainp" id="virementCompteVP">
+        <button id="closeVP_1" class="buttonV_pop" onclick="closepopupvp()">
+          &times;
+        </button>
+        <h2 class="popup-title">Virement de compte à compte</h2>
+        <form id="transactionFormVP_1">
+          <div class="form-group">
+            <label for="PériodicitéVP_1" class="labelV" style="color: #0e9d49"
+              >Périodicité:</label
+            >
+            <select
+              name="periode"
+              size="1"
+              class="selectV"
+              id="PériodicitéVP_1"
+            >
+              <option>period</option>
+              <option>Mensuel</option>
+              <option>Bimensuel</option>
+              <option>Trimestriel</option>
+              <option>Semestriel</option>
+            </select>
+          </div>
+          <div class="periode-container">
+            <div class="form-group">
+              <label
+                class="labelV"
+                for="Premier_virementVP_1"
+                style="color: #0e9d49"
+                >Premier virement le:</label
+              >
+              <input
+                type="date"
+                name="Premier_virement"
+                id="Premier_virementVP_1"
+                value="Premier virement"
+                class="inputV"
+              />
+            </div>
+          </div>
+          <div class="periode-container">
+            <div class="form-group">
+              <label
+                class="labelV"
+                for="dernier_virementVP_1"
+                style="color: #0e9d49"
+                >Dernier virement le:</label
+              >
+
+              <input
+                type="date"
+                id="dernier_virementVP_1"
+                value="Dernier virement"
+                class="inputV"
+              />
+            </div>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label
+              for="Compte-débiterVP_1"
+              class="labelV"
+              style="color: #0e9d49"
+              >Compte à débiter:</label
+            >
+            <select
+              name="compteDebiteur"
+              size="1"
+              class="selectV"
+              id="Compte-débiterVP_1"
+            >
+              <option>Sélectionner le compte à débiter</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="DeviseVP_1" class="labelV" style="color: #0e9d49"
+              >Devise:</label
+            >
+            <select name="Devise-VP" id="DeviseVP_1" size="1" class="selectV">
+              <option>Sélectionner le devise du virement</option>
+              <option value="784">TND</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label
+              for="compteCrediteurVP_1"
+              class="labelV"
+              style="color: #0e9d49"
+              >Compte à créditer:</label
+            >
+            <select
+              name="Compte-créditerVP"
+              size="1"
+              class="selectV"
+              id="compteCrediteurVP_1"
+            >
+              <option>Sélectionner le compte à créditer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="MontantVP_1" class="labelV" style="color: #0e9d49"
+              >Montant:</label
+            >
+            <input
+              type="text"
+              class="inputV"
+              id="MontantVP_1"
+              placeholder="250,565 DT"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              for="Motif-paiementVP_1"
+              class="labelV"
+              style="color: #0e9d49"
+              >Motif paiement:</label
+            >
+            <textarea
+              type="text"
+              class="inputV"
+              id="Motif-paiementVP_1"
+            ></textarea>
+          </div>
+          <button
+            type="button"
+            onclick="closepopupvp()"
+            class="buttonV"
+            id="submitTransactionVP_1"
+          >
+            Valider
+          </button>
+        </form>
+      </div>
+      <div class="mainp" id="virementbenefVP">
+        <button id="closeVP_2" class="buttonV_pop" onclick="closepopupvp()">
+          &times;
+        </button>
+        <h2 class="popup-title">Virement vers bénéficaire</h2>
+
+        <form id="transactionFormVP_2">
+          <div class="form-group">
+            <label for="PériodicitéVP_2" class="labelV" style="color: #0e9d49"
+              >Périodicité:</label
+            >
+
+            <select name="devise" size="1" class="selectV" id="PériodicitéVP_2">
+              <option>Mensuel</option>
+              <option>Bimensuel</option>
+              <option>Trimestriel</option>
+              <option>Semestriel</option>
+            </select>
+          </div>
+          <div class="periode-container">
+            <div class="form-group">
+              <label
+                class="labelV"
+                for="Premier_virementVP_2"
+                style="color: #0e9d49"
+                >Premier virement le:</label
+              >
+              <input
+                type="date"
+                name="Premier_virement"
+                id="Premier_virementVP_2"
+                value="Premier virement"
+                class="inputV"
+              />
+            </div>
+          </div>
+          <div class="periode-container">
+            <div class="form-group">
+              <label
+                class="labelV"
+                for="dernier_virementVP_2"
+                style="color: #0e9d49"
+                >Dernier virement le:</label
+              >
+
+              <input
+                type="date"
+                id="dernier_virementVP_2"
+                value="Dernier virement"
+                class="inputV"
+              />
+            </div>
+          </div>
+          <hr />
+
+          <div class="form-group">
+            <label class="labelV" style="color: #0e9d49"
+              ><strong>Bénéficiaire</strong></label
+            >
+          </div>
+          <div class="form-group">
+            <label
+              class="labelV"
+              for="nomBeneficiaireVP_2"
+              style="color: #0e9d49"
+              >Nom/Raison Sociale:</label
+            >
+            <input type="text" class="inputV" id="nomBeneficiaireVP_2" />
+          </div>
+          <div class="form-group">
+            <label class="labelV" for="banqueVP_2" style="color: #0e9d49"
+              >Banque:</label
+            >
+            <select
+              name="compteCrediteur"
+              size="1"
+              class="selectV"
+              id="banqueVP_2"
+            >
+              <option value="01">ATB</option>
+              <option value="02">BFT</option>
+              <option value="03">BNA</option>
+              <option value="07">AMEN BANK</option>
+              <option value="04">ATTIJARI</option>
+              <option value="05">BT</option>
+              <option value="09">BDET</option>
+              <option value="10">STB</option>
+              <option value="11">UBCI</option>
+              <option value="08">BIAT</option>
+              <option value="00">BCT</option>
+              <option value="12">UIB</option>
+              <option value="14">BH</option>
+              <option value="16">CBNA</option>
+              <option value="17">CCP</option>
+              <option value="18">BNDT</option>
+              <option value="20">BTK</option>
+              <option value="21">STUSID</option>
+              <option value="23">TQB</option>
+              <option value="24">BTE</option>
+              <option value="26">BTL</option>
+              <option value="27">BTS</option>
+              <option value="28">ABC</option>
+              <option value="31">BCMA</option>
+              <option value="32">AL BARAKA</option>
+              <option value="33">NAIB</option>
+              <option value="35">ALUBAF</option>
+              <option value="72">UTB</option>
+              <option value="73">TIB</option>
+              <option value="74">LINC</option>
+              <option value="75">CITI BANK</option>
+              <option value="78">ABC TS</option>
+              <option value="96">ALUBAF</option>
+              <option value="99">AUTRES</option>
+              <option value="25">BZ</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="labelV" for="ribVP_2" style="color: #0e9d49"
+              >Numéro de compte:</label
+            >
+            <input
+              type="text"
+              class="inputV"
+              id="ribVP_2"
+              maxlength="20"
+              size="50"
+            />
+          </div>
+
+          <hr />
+          <div class="form-group">
+            <label class="labelV" style="color: #0e9d49"
+              ><strong>Virement</strong></label
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="labelV" for="motifPaiementVP_2" style="color: #0e9d49"
+              >Motif paiement:</label
+            >
+            <textarea
+              type="text"
+              class="inputV"
+              id="motifPaiementVP_2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="labelV" for="deviseVP_2" style="color: #0e9d49"
+              >Devise:</label
+            >
+
+            <select name="devise" size="1" class="selectV" id="deviseVP_2">
+              <option>Sélectionner le devise du virement</option>
+              <option value="784">TND</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label
+              class="labelV"
+              for="compteDebiteurVP_2"
+              style="color: #0e9d49"
+              >Compte à débiter:</label
+            >
+            <select
+              name="compteDebiteur"
+              size="1"
+              class="selectV"
+              id="compteDebiteurVP_2"
+            >
+              <option>Sélectionner le compte débiter</option>
+            </select>
+          </div>
+          <button
+            type="button"
+            onclick="closepopupvp()"
+            class="buttonV"
+            id="submitTransactionVP_2"
+          >
+            Valider
+          </button>
+        </form>
+      </div>
+      <div class="mainp" id="virementSigneVP">
+        <button id="closeVP_3" class="buttonV_pop" onclick="closepopupvp()">
+          &times;
+        </button>
+        <h2 class="popup-title">Virement permanent à signer</h2>
+        <form id="transactionFormVP_3">
+          <div style="overflow-x: auto; margin-bottom: 20px">
+            <table>
+              <tr>
+                <th>
+                  <label
+                    ><input type="checkbox" id="signeVP_3" name="signev"
+                  /></label>
+                </th>
+                <th>Type</th>
+                <th>Compte à débiter</th>
+                <th>Compte à créditer</th>
+                <th>Montant</th>
+                <th>Motif paiement</th>
+                <th>Devise</th>
+                <th>Date d'exécution</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="modifierbtn">Modifier</button></td>
+              </tr>
+            </table>
+          </div>
+        </form>
+        <form id="transactionFormVP">
+          <div style="overflow-x: auto">
+            <table>
+              <tr>
+                <th>
+                  <label
+                    ><input type="checkbox" id="signeVP_02" name="signev"
+                  /></label>
+                </th>
+                <th>Type</th>
+                <th>Compte à débiter</th>
+                <th>Bénéficiaire</th>
+                <th>Montant</th>
+                <th>Banque</th>
+                <th>Devise</th>
+                <th>Date d'exécution</th>
+                <th>Premier virement le</th>
+                <th>Dernier virement le</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="modifierbtn">Modifier</button></td>
+              </tr>
+            </table>
+          </div>
+        </form>
+        <div class="button-container">
+          <button type="button" onclick="closepopupvp()" class="buttonV">
+            signer
+          </button>
+          <button type="button" onclick="closepopupvp()" class="buttonV">
+            refuser
+          </button>
+        </div>
+      </div>
+      <div class="mainp" id="virementhistoriqueVP">
+        <button id="closeVP_4" class="buttonV_pop" onClick="closepopupvp()">
+          &times;
+        </button>
+        <h2 class="popup-title">Liste des virements permanents</h2>
+        <form id="transactionFormVP_4">
+          <div style="overflow-x: auto">
+            <table id="T-virementhistoriqueVP_1">
+              <tr>
+                <th>Type</th>
+                <th>Compte à débiter</th>
+                <th>Compte à créditer</th>
+                <th>Montant</th>
+                <th>Motif paiement</th>
+                <th>Devise</th>
+                <th>Date d'exécution</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <button
+                    type="button"
+                    onclick="closepopupvp()"
+                    class="modifierbtn"
+                  >
+                    arrêter
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </form>
+        <div class="vpPrintbtn">
+          <button type="button" class="buttonV" onclick="printTableVP_1()">
+            Imprimer
+          </button>
+        </div>
+        <form id="transactionFormVP_5">
+          <div style="overflow-x: auto">
+            <table id="T-virementhistoriqueVP_2">
+              <tr>
+                <th>Type</th>
+                <th>Compte à débiter</th>
+                <th>Bénéficiaire</th>
+                <th>Montant</th>
+                <th>Banque</th>
+                <th>Devise</th>
+                <th>Date d'exécution</th>
+                <th>Premier virement le</th>
+                <th>Dernier virement le</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <button
+                    type="button"
+                    onclick="closepopupvp()"
+                    class="modifierbtn"
+                  >
+                    arrêter
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </form>
+        <div class="vpPrintbtn">
+          <button type="button" class="buttonV" onclick="printTableVP_2()">
+            Imprimer
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- popup virement permanent -->
+
+    <!-- script -->
+
+    <script
+      src="https://kit.fontawesome.com/474bda8349.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/login1.js"></script>
+    <script src="../js/virement.js"></script>
+    <script src="../js/virementmain.js"></script>
+  </body>
+</html>

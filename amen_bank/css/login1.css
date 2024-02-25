@@ -1,0 +1,334 @@
+body {
+  background:
+    url("../amenbank_img/creditcardbg.png") right top no-repeat,
+    url("../amenbank_img/creditcardbg.png") bottom left no-repeat;
+}
+/**********************************header************************************/
+.header,
+.compte-virement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  padding: 10px 80px 0 80px;
+}
+.account-container {
+  padding: 0 80px 0 80px;
+}
+.logo-container img {
+  max-height: 50px; /* Adjust the height as needed */
+}
+
+.login-signup {
+  text-align: right;
+  margin-right: 150px;
+}
+
+.login-signup button {
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(0, 0, 0, 0.63);
+  border: none;
+  cursor: pointer;
+}
+
+.login-signup button:hover {
+  color: #0e4194;
+}
+/**************************************************************/
+/******************************* login/signup...*********************/
+.action-buttons {
+  display: flex;
+  align-items: center;
+  margin: 0 150px 0 150px;
+}
+
+.contact-button,
+.service-button,
+.login-button,
+.signup-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.63);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-button:hover,
+.service-button:hover,
+.login-button:hover,
+.signup-button:hover {
+  background-color: #7dd138;
+  color: #0e4194;
+}
+
+/******************************* login/signup...*********************/
+
+hr {
+  width: 1100px;
+  color: #ccc;
+}
+/*************************** frame***************************/
+.frame {
+  margin-top: 20px;
+  margin-left: 225px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Set your desired transparency level here (0 to 1) */
+  width: 900px; /* Set your desired maximum width for the frame */
+  height: 450px;
+  box-shadow:
+    0 4px 4px 0 rgba(0, 0, 0, 0.25),
+    0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+.login-container {
+  background-color: #0e9d49;
+  border: 1px solid #ccc;
+  padding: 60px;
+  max-width: 400px;
+  width: 90%;
+  height: 329px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 140px;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.label {
+  margin-bottom: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.input {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.input:focus {
+  outline: none;
+  border: 2px solid #0e9d49;
+}
+
+.button {
+  padding: 12px 20px;
+  background-color: #10e83b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #7dd138;
+}
+.forgot-password-link {
+  margin-top: 10px;
+  color: #eceaea; /* Set the link color to match the specified color (#0E9D49) */
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+  color: #0e4194;
+}
+
+/************************popup***********************/
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.popup {
+  border-color: #0e4194;
+  background-color: rgb(255, 255, 255);
+  width: 420px;
+  padding: 30px 40px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 60%;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  display: none;
+  text-align: center;
+}
+.popupV .buttonV_pop,
+.popup .button_pop {
+  display: block;
+  margin: 0 0 20px auto;
+  font-size: 30px;
+  color: #ffffff;
+  background: #0e4194;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.popup h1 {
+  margin-top: -20px;
+}
+.popup .p {
+  font-size: 18px;
+  margin: 20px 0;
+  line-height: 25px;
+  text-align: center;
+}
+
+#a {
+  display: block;
+  width: 150px;
+  position: relative;
+  margin: 10px auto;
+  text-align: center;
+  background-color: #0e4194;
+  border-radius: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 0;
+}
+/*********************side nav buttons**************************/
+#mySidenav .a {
+  margin-top: 160px;
+  position: absolute;
+  left: -100px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 120px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav .a:hover {
+  left: 0;
+}
+
+#facebook {
+  top: 20px;
+  background-color: #0e9d49;
+}
+
+#twitter {
+  top: 80px;
+  background-color: #0e9d49;
+}
+
+#youtube {
+  top: 140px;
+  background-color: #0e9d49;
+}
+
+#linkdin {
+  top: 200px;
+  background-color: #0e9d49;
+}
+#instagram {
+  top: 260px;
+  background-color: #0e9d49;
+}
+/********************************************************/
+/**************************side screen overlay nav *********************/
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content,
+.dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  background: none;
+  border: none;
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+
+.overlay a,
+.dropdown-btn {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus,
+.dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+/******************dropdown (contact)*******************/
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: #0e9d49;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
